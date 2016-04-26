@@ -1,0 +1,20 @@
+{% if DISPLAY_SEARCH_IN_SIDEBAR %}
+<div class="widget widget_search">
+  <h3>Search</h3> 
+  <form action="#">
+     <input type="text" value="Search here..." onblur="if(this.value == '') { this.value = 'Search here...'; }" onfocus="if (this.value == 'Search here...') { this.value = ''; }" class="text-search">
+     <input type="submit" value="" class="submit-search">
+  </form>
+</div>
+{% endif %}
+{% if DISPLAY_CATEGORIES_IN_SIDEBAR -%}
+<div class="widget widget_categories group">
+<h3>Categories.</h3> 
+<ul>
+{% for cat, null in categories %}
+    <li{% if cat == category %} class="current"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+{% endfor %}
+</ul>
+</div>
+{% endif %}
+{% include 'taglist.html' %}

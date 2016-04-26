@@ -1,0 +1,11 @@
+{% if article and article.tags %}
+<div class="widget widget_tags">
+   <h3>Tags.</h3>
+   <div class="tagcloud group">
+   {% for tag in article.tags %}
+      <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag | escape }}</a>
+   {% endfor %}
+   </div>
+</div>
+{% endif %}
+

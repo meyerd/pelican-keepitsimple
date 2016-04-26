@@ -1,0 +1,13 @@
+<div class="entry-meta">
+  <ul>
+    <li>{{ article.locale_modified }}</li>
+	<span class="meta-sep">&bull;</span>								
+	<li><a href="{{ SITEURL }}/{{ article.category.url }}" title="" rel="category tag">{{ article.category }}</a></li>
+    {% if article.authors %}
+	{% for author in article.authors %}
+	<span class="meta-sep">&bull;</span>
+	<li><a href="{{ SITEURL }}/{{ author.url }}" rel="author">{{ author }}</a></li>
+	{% endfor %}
+	{% endif %}
+  </ul>
+</div>

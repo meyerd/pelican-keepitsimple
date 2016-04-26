@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div id="main" class="eight columns">
+<h1>Archives for {{ SITENAME }}</h1>
+
+<dl>
+{% for article in dates %}
+    <dt>{{ article.locale_date }}</dt>
+    <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
+{% endfor %}
+</dl>
+  </div>
+  <div id="sidebar" class="four columns">
+    {% include 'sidebar.html' %}
+  </div>
+</div>
+{% endblock %}
