@@ -20,6 +20,13 @@
    {% endif %}
    <!-- <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/modernizr.js"></script> -->
    <link rel="shortcut icon" href="{{ SITEURL}}/favicon.png" >
+   {% if article %}
+     {% if article.styles %}
+       {% for style in article.styles %}
+         {{ style }}
+       {% endfor %}
+     {% endif %}
+   {% endif %}
 </head>
 <body>
    <header id="top">
@@ -98,4 +105,11 @@
    <!-- <script type="text/javascript" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/main.js"></script> -->
    {% include 'analytics.html' %}
 </body>
+{% if article %}
+  {% if article.scripts %}
+    {% for script in article.scripts %}
+      {{ script }}
+    {% endfor %}
+  {% endif %}
+{% endif %}
 </html>
