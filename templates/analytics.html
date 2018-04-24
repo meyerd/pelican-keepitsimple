@@ -3,16 +3,26 @@
 window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website. It also annoys you by showing this banner.","dismiss":"Got it!","learnMore":"More info","link":"/pages/cookiepolicy.html","theme":"{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/light-top.css"};
     </script>
     <script type="text/javascript" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/cookieconsent.min.js"></script>
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', '{{GOOGLE_ANALYTICS}}']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = 'https://ssl.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{GOOGLE_ANALYTICS}}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{GOOGLE_ANALYTICS}', { 'anonymize_ip': true });
     </script>
+  <script>
+    var gaProperty = '{{GOOGLE_ANALYTICS}'; 
+    var disableStr = 'ga-disable-' + gaProperty; 
+    if (document.cookie.indexOf(disableStr + '=true') > -1) { 
+    window[disableStr] = true;
+    } 
+    function gaOptout() { 
+    document.cookie = disableStr + '=true; expires=Thu, 31 Dec 3099 23:59:59 UTC; path=/'; 
+    window[disableStr] = true; 
+    alert('Das Tracking ist jetzt deaktiviert'); 
+    }
+  </script>
 {% endif %}
 {% if GAUGES %}
     <script type="text/javascript">
